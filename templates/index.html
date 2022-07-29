@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="A simple Password Generator website using flask.">
+    <meta name="keywords" content="Flask, HTML, CSS, JavaScript">
+    <meta name="author" content="Alimus Sifar">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun&family=Noto+Sans+Mono&display=swap">
+  </head>
+
+  <body>
+    <div class="main">
+      <img src="{{ url_for('static', filename='logo-transparent.png') }}" alt="Website Logo">
+      <h1>Password Generator</h1>
+
+      <form method="post">
+        <div class="website">
+          <div class="label">
+            Website:
+          </div>
+          <div class="values">
+            <input type="text" id="website-input" name="website" value="{{ website }}" required>
+          </div>
+        </div>
+
+        <div class="user">
+          <div class="label">
+            Username/Email:
+          </div>
+          <div class="value">
+            <input type="text" id="user-input" name="user" value="{{ user }}" required>
+          </div>
+        </div>
+
+        <div class="length">
+          <div class="label">
+            Length:
+          </div>
+          <div class="values">
+            <input type="range" id="length-range" name="length" min=8 max=32 value="{{ length }}">
+            <input type="number" id="length-input" name="length" min=8 max=32 value="{{ length }}" disabled>
+          </div>
+        </div>
+
+        <div class="flags">
+          <div class="label">
+            Flags:
+          </div>
+          <div class="values">
+            {% if a_flag %}
+            <input type="checkbox" id="a_flag" name="a_flag" value=1 checked>
+            {% else %}
+            <input type="checkbox" id="a_flag" name="a_flag" value=1>
+            {% endif %}
+            <label for="a_flag">Alphabets</label>
+            {% if d_flag %}
+            <input type="checkbox" id="d_flag" name="d_flag" value=1 checked>
+            {% else %}
+            <input type="checkbox" id="d_flag" name="d_flag" value=1>
+            {% endif %}
+            <label for="d_flag">Digits</label>
+            {% if s_flag %}
+            <input type="checkbox" id="s_flag" name="s_flag" value=1 checked>
+            {% else %}
+            <input type="checkbox" id="s_flag" name="s_flag" value=1>
+            {% endif %}
+            <label for="s_flag">Symbols</label>
+          </div>
+        </div>
+
+        <div class="login_link">
+          <div class="label">
+            Login link:
+          </div>
+          <div class="values">
+            <input type="text" id="login_link-input" name="login_link" value="{{ login_link }}"></input>
+          </div>
+        </div>
+
+        <div class="password">
+          <div class="label">
+            Password:
+          </div>
+          <div class="values">
+            <input type="text" id="password-input" name="password" value="{{ password }}"></input>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <div class="button">
+            <button type="submit" id="generate-button" formaction="{{ url_for('generate') }}">🔁 Generate</button>
+          </div>
+          <div class="button">
+            <button type="submit" id="save-button" formaction="{{ url_for('save') }}"> 💾 Save to Sheets</button>
+          </div>
+          <div class="button">
+            <button type="submit" id="search-button" formaction="{{ url_for('search') }}">🔍 Search</button>
+          </div>
+        </div>
+      </form>
+
+      {% if hasAlert %}
+      <div class="alerts">
+        <h3>{{ alert }}</h3>
+      </div>
+      {% endif %}
+    </div>
+
+    <script>
+      const lengthRange = document.getElementById("length-range");
+      const lengthInput = document.getElementById("length-input");
+      lengthRange.addEventListener("input", (event) => {
+        lengthInput.value = event.target.value;
+      });
+      lengthInput.addEventListener("input", (event) => {
+        lengthRange.value = event.target.value;
+      });
+    </script>
+  </body>
+
+</html>

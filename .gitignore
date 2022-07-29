@@ -127,3 +127,18 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# replit files
+.breakpoints
+.cache/
+.config/
+.replit
+.upm/
+replit.nix
+
+# VS Code settings
+.vscode/
+
+# Poetry files
+poetry.lock
+pyproject.toml

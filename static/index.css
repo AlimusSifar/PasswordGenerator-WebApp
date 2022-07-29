@@ -1,0 +1,66 @@
+.main {
+    font-family: "Sarabun", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.website {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.length {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.values {
+    display: contents;
+}
+
+.flags {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login_link {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.password {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+input#password-input {
+    font-family: "Noto Sans Mono", monospace;
+    font-weight: bold;
+    width: 169px;
+    height: 15px;
+}
+
+.buttons {
+    padding: 10px 0px;
+}
+
+.button {
+    display: contents;
+}
